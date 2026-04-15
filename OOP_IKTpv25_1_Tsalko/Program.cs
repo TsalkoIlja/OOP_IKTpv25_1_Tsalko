@@ -31,10 +31,7 @@ namespace OOP_IKTpv25_1_Tsalko
             kool.LisaInimene(op);
             kool.LisaInimene(opilane1);
 
-            // выводим всех
-            kool.KuvaKõik();
-
-            Console.WriteLine("=== KOOLIHALDUS LÕPP ===\n");
+           
 
 
             // --- Õpilane ---
@@ -174,7 +171,13 @@ namespace OOP_IKTpv25_1_Tsalko
                 Console.WriteLine($" {tüüp} summa: {isik.ArvutaPalk()} eurot {((Isik)isik).Nimi}le");
             }
 
+           
+
+            Console.WriteLine("\n=== KÕIK INIMESED KOOLIS ===");
+            kool.KuvaKõik();
+
             Console.ReadLine();
+
         }
     }
 }
