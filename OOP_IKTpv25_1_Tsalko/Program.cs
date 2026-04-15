@@ -162,6 +162,9 @@ namespace OOP_IKTpv25_1_Tsalko
                 kool.LisaInimene(õpilane);   // ← ДОБАВЛЕНО
             }
 
+            Console.WriteLine("\n=== KÕIK INIMESED KOOLIS ===");
+            kool.KuvaKõik();
+
             // --- Väljamaksed ---
             Console.WriteLine("\n--- Väljamaksed ---");
 
@@ -172,10 +175,6 @@ namespace OOP_IKTpv25_1_Tsalko
             }
 
            
-
-            Console.WriteLine("\n=== KÕIK INIMESED KOOLIS ===");
-            kool.KuvaKõik();
-
             Console.ReadLine();
 
         }
