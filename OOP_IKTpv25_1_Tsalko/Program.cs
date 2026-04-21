@@ -31,10 +31,7 @@ namespace OOP_IKTpv25_1_Tsalko
             kool.LisaInimene(op);
             kool.LisaInimene(opilane1);
 
-            // выводим всех
-            kool.KuvaKõik();
 
-            Console.WriteLine("=== KOOLIHALDUS LÕPP ===\n");
 
 
             // --- Õpilane ---
@@ -168,6 +165,26 @@ namespace OOP_IKTpv25_1_Tsalko
                 kool.LisaInimene(õpilane);   // ← ДОБАВЛЕНО
             }
 
+            // --- Üliõpilane ---
+            Üliõpilane ylikool = new Üliõpilane
+            {
+                Nimi = "Karl",
+                Kool = "TalTech",
+                Klass = 2,                 // kursus
+                Eriala = "IT-süsteemid",
+                KeskmineHinne = 4.7,
+                Puudumised = 1,
+                KasOnSotsTõend = false,
+                Staatus = Õppevorm.Päevane
+            };
+
+            kool.LisaInimene(ylikool);
+            palgasaajad.Add(ylikool);
+
+
+            Console.WriteLine("\n=== KÕIK INIMESED KOOLIS ===");
+            kool.KuvaKõik();
+
             // --- Väljamaksed ---
             Console.WriteLine("\n--- Väljamaksed ---");
 
@@ -177,8 +194,13 @@ namespace OOP_IKTpv25_1_Tsalko
                 Console.WriteLine($" {tüüp} summa: {isik.ArvutaPalk()} eurot {((Isik)isik).Nimi}le");
             }
 
+            Console.WriteLine("\n=== OTSING ===");
+            kool.OtsiNimeJärgi("Ka");   // найдёт Karl, Katrin, Kadi
+
             Console.ReadLine();
 
         }
     }
 }
+
+    
