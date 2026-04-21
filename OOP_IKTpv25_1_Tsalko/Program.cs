@@ -31,10 +31,7 @@ namespace OOP_IKTpv25_1_Tsalko
             kool.LisaInimene(op);
             kool.LisaInimene(opilane1);
 
-            // выводим всех
-            kool.KuvaKõik();
 
-            Console.WriteLine("=== KOOLIHALDUS LÕPP ===\n");
 
 
             // --- Õpilane ---
@@ -49,6 +46,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 KasOnSotsTõend = true,
                 Staatus = Õppevorm.Päevane
             };
+            kool.LisaInimene(oppilane);   // ← ДОБАВЛЕНО
 
             oppilane.Kirjelda();
             Console.WriteLine("Stipendium: " + oppilane.ArvutaPalk() + "€\n");
@@ -61,9 +59,13 @@ namespace OOP_IKTpv25_1_Tsalko
                 Aine = "Bioloogia",
                 Baaspalk = 1200
             };
+            kool.LisaInimene(opetaja);   // ← ДОБАВЛЕНО
 
             opetaja.Kirjelda();
             Console.WriteLine("Õpetaja palk: " + opetaja.ArvutaPalk() + "€\n");
+
+            // --- TEST: õpetaja paneb hinde ---
+            opetaja.Hinda("5");
 
             // --- Direktor ---
             Direktor direktor = new Direktor
@@ -74,6 +76,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 Baaspalk = 1500,
                 Lisatasu = 600
             };
+            kool.LisaInimene(direktor);   // ← ДОБАВЛЕНО
 
             direktor.Kirjelda();
             Console.WriteLine("Direktori palk kokku: " + direktor.ArvutaPalk() + "€");
@@ -97,6 +100,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 KasOnSotsTõend = false,
                 Staatus = Õppevorm.Kaugõpe
             };
+            kool.LisaInimene(mati);   // ← ДОБАВЛЕНО
 
             Õpilane kadi = new Õpilane
             {
@@ -108,6 +112,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 KasOnSotsTõend = true,
                 Staatus = Õppevorm.Päevane
             };
+            kool.LisaInimene(kadi);   // ← ДОБАВЛЕНО
 
             Õpilane jyri = new Õpilane
             {
@@ -119,6 +124,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 KasOnSotsTõend = false,
                 Staatus = Õppevorm.Ekstern
             };
+            kool.LisaInimene(jyri);   // ← ДОБАВЛЕНО
 
             Õpetaja anna = new Õpetaja
             {
@@ -126,6 +132,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 Aine = "Python",
                 Baaspalk = 1300
             };
+            kool.LisaInimene(anna);   // ← ДОБАВЛЕНО
 
             Õpetaja peeter = new Õpetaja
             {
@@ -133,6 +140,7 @@ namespace OOP_IKTpv25_1_Tsalko
                 Aine = "C#",
                 Baaspalk = 1400
             };
+            kool.LisaInimene(peeter);   // ← ДОБАВЛЕНО
 
             palgasaajad.AddRange(new ITööline[] { mati, kadi, jyri, anna, peeter });
 
@@ -150,11 +158,32 @@ namespace OOP_IKTpv25_1_Tsalko
                     KeskmineHinne = Math.Round(rnd.NextDouble() * 5, 2),
                     Puudumised = rnd.Next(0, 50),
                     KasOnSotsTõend = rnd.Next(0, 2) == 1,
-                    Staatus = (Õppevorm)rnd.Next(0, 4) // random õppevorm
+                    Staatus = (Õppevorm)rnd.Next(0, 4)
                 };
 
                 palgasaajad.Add(õpilane);
+                kool.LisaInimene(õpilane);   // ← ДОБАВЛЕНО
             }
+
+            // --- Üliõpilane ---
+            Üliõpilane ylikool = new Üliõpilane
+            {
+                Nimi = "Karl",
+                Kool = "TalTech",
+                Klass = 2,                 // kursus
+                Eriala = "IT-süsteemid",
+                KeskmineHinne = 4.7,
+                Puudumised = 1,
+                KasOnSotsTõend = false,
+                Staatus = Õppevorm.Päevane
+            };
+
+            kool.LisaInimene(ylikool);
+            palgasaajad.Add(ylikool);
+
+
+            Console.WriteLine("\n=== KÕIK INIMESED KOOLIS ===");
+            kool.KuvaKõik();
 
             // --- Väljamaksed ---
             Console.WriteLine("\n--- Väljamaksed ---");
@@ -162,11 +191,14 @@ namespace OOP_IKTpv25_1_Tsalko
             foreach (ITööline isik in palgasaajad)
             {
                 string tüüp = isik.VäljamakseTüüp.ToString();
-
                 Console.WriteLine($" {tüüp} summa: {isik.ArvutaPalk()} eurot {((Isik)isik).Nimi}le");
             }
 
+            Console.WriteLine("\n=== OTSING ===");
+            kool.OtsiNimeJärgi("Ka");   // найдёт Karl, Katrin, Kadi
+
             Console.ReadLine();
+
         }
     }
 }

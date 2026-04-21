@@ -25,6 +25,28 @@ namespace OOP_IKTpv25_1_Tsalko
                 isik.Kirjelda();
             }
         }
+        public void OtsiNimeJärgi(string otsitavNimi)
+        {
+            Console.WriteLine($"\n--- Otsingu tulemused: \"{otsitavNimi}\" ---");
+
+            bool leitud = false;
+
+            foreach (Isik inimene in inimesed)
+            {
+                if (inimene.Nimi.Contains(otsitavNimi, StringComparison.OrdinalIgnoreCase))
+                {
+                    inimene.Kirjelda();
+                    leitud = true;
+                }
+            }
+
+            if (!leitud)
+            {
+                Console.WriteLine("Midagi ei leitud.");
+            }
+        }
+
+
     }
 }
 
