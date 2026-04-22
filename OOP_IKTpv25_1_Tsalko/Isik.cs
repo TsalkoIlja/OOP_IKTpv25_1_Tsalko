@@ -10,17 +10,28 @@ namespace OOP_IKTpv25_1_Tsalko
 
         public string Nimi { get; set; }
 
+        // ⭐ STAATILINE LOENDUR — ühine kõigile isikutele
+        public static int InimesteKoguarv = 0;
+
         public int Sünniaasta
         {
-            get { return sünniaasta; }
+            get => sünniaasta;
             set
             {
-                if (value > 1900 && value <= DateTime.Now.Year)
-                    sünniaasta = value;
-                else
-                    Console.WriteLine("Vigane sünniaasta!");
+                if (value == 0)
+                {
+                    // 0 = sünniaasta pole teada — see on OK
+                    sünniaasta = 0;
+                    return;
+                }
+
+                if (value < 1900 || value > DateTime.Now.Year)
+                    throw new ArgumentException("Vigane aasta!");
+
+                sünniaasta = value;
             }
         }
+
 
         public int Vanus => sünniaasta == 0 ? 0 : DateTime.Now.Year - sünniaasta;
 
@@ -32,7 +43,17 @@ namespace OOP_IKTpv25_1_Tsalko
                 Console.WriteLine($"Tere! Mina olen {Nimi} ja ma olen {Vanus} aastat vana.");
         }
 
-        // ABSTRACT 
+        // ⭐ KONSTRUKTOR — siia lisame loenduri suurendamise
+        public Isik(string nimi, int sünniaasta = 0)
+        {
+            Nimi = nimi;
+            Sünniaasta = sünniaasta;
+
+            // ⭐ IGA UUS ISIK SUURENDAB LOENDURIT
+            InimesteKoguarv++;
+        }
+
         public abstract void Kirjelda();
     }
+
 }

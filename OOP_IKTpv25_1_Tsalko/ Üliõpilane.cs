@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 namespace OOP_IKTpv25_1_Tsalko
 {
     public class Üliõpilane : Õpilane

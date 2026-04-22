@@ -1,21 +1,27 @@
-﻿using System;
+﻿using OOP_IKTpv25_1_Tsalko;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
-namespace OOP_IKTpv25_1_Tsalko
+public class Direktor : Õpetaja
 {
-    public class Direktor : Õpetaja
+    public double Lisatasu { get; set; }
+
+    // ⭐ KONSTRUKTOR
+    public Direktor(string nimi, int sünniaasta, string aine, double baaspalk, double lisatasu)
+        : base(nimi, sünniaasta, aine, baaspalk)
     {
-        public double Lisatasu { get; set; }
+        Lisatasu = lisatasu;
+    }
 
-        public override double ArvutaPalk()
-        {
-            return base.ArvutaPalk() + Lisatasu;
-        }
+    public override double ArvutaPalk()
+    {
+        return base.ArvutaPalk() + Lisatasu;
+    }
 
-        public override void Kirjelda()
-        {
-            Console.WriteLine($"Mina olen direktor {Nimi}. Minu palk on {ArvutaPalk()}€.");
-        }
+    public override void Kirjelda()
+    {
+        Console.WriteLine($"Mina olen direktor {Nimi}. Minu palk on {ArvutaPalk()}€.");
     }
 }

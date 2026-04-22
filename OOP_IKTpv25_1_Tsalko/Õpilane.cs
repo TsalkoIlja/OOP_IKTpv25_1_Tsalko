@@ -15,6 +15,31 @@ namespace OOP_IKTpv25_1_Tsalko
         public TööTüüp VäljamakseTüüp { get; set; } = TööTüüp.Palk;
         public Õppevorm Staatus { get; set; }  //ENUM SIIN
 
+        // ПУСТОЙ КОНСТРУКТОР — чтобы старый код работал
+        public Õpilane() : base("Nimetu")
+        {
+
+        }
+
+        // ГЛАВНЫЙ КОНСТРУКТОР
+        public Õpilane(
+            string nimi,
+            string kool,
+            int klass,
+            double keskmineHinne,
+            int puudumised,
+            bool kasOnSotsToend,
+            Õppevorm staatus,
+            int sünniaasta
+        ) : base(nimi, sünniaasta)
+        {
+            Kool = kool;
+            Klass = klass;
+            KeskmineHinne = keskmineHinne;
+            Puudumised = puudumised;
+            KasOnSotsTõend = kasOnSotsToend;
+            Staatus = staatus;
+        }
 
         public void Õpi()
         {
