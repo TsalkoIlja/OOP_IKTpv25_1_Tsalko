@@ -200,6 +200,16 @@ namespace OOP_IKTpv25_1_Tsalko
                 kool.LisaInimene(testOpetaja);
                 palgasaajad.Add(testOpetaja);
 
+                // --- Kursus (Harjutus 10) ---
+                Kursus kursus = new Kursus
+                {
+                    Nimi = "OOP kursus",
+                    VastutavÕpetaja = testOpetaja
+                };
+
+                Console.WriteLine("\n=== KURSUS ===");
+                kursus.KuvaInfo();
+
                 Console.WriteLine("\n=== KÕIK INIMESED KOOLIS ===");
 
                 List<Isik> grupp = new List<Isik>
@@ -211,11 +221,14 @@ namespace OOP_IKTpv25_1_Tsalko
 
                 Isik[] massiiv = {
                     new Õpilane { Nimi = "Mass1", Sünniaasta = 2006, Klass = 8 },
-                    new Õpetaja { Nimi = "Mass2", Sünniaasta = 1975, Aine = "Füüsika", Baaspalk = 1400 }
+                    new Õpetaja { Nimi = "Mass2", Sünniaasta = 1975, Aine = "Füüsика", Baaspalk = 1400 }
                 };
                 kool.LisaInimene(massiiv);
 
                 kool.KuvaKõik();
+
+                Console.WriteLine("\n=== AINULT ÕPILASED ===");
+                kool.KuvaAinultÕpilased();
 
                 Console.WriteLine("\n--- Väljamaksed ---");
                 foreach (ITööline isik in palgasaajad)
@@ -240,6 +253,7 @@ namespace OOP_IKTpv25_1_Tsalko
         }
     }
 }
+
 
 
 

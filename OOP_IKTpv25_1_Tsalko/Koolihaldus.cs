@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace OOP_IKTpv25_1_Tsalko
 {
@@ -106,8 +107,17 @@ namespace OOP_IKTpv25_1_Tsalko
 
             Console.WriteLine($"Fail '{failinimi}' on salvestatud.");
         }
+        public void KuvaAinultÕpilased()
+        {
+            Console.WriteLine("\n--- AINULT ÕPILASED ---");
+            foreach (Õpilane õpilane in inimesed.OfType<Õpilane>())
+            {
+                õpilane.Kirjelda();
+            }
 
 
+
+        }
     }
 }
 
